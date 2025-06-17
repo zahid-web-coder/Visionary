@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Company | Visionary</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgb(245, 241, 232);
+      padding: 50px 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      height: 100px;
+    }
+
+    .logo img {
+      width: 200px;
+    }
+
+    .company-section {
+      background:
+      linear-gradient(to bottom,  rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        url('assets/comp.jpg') no-repeat center center / cover;
+      padding: 60px 20px;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    .company-section h1 {
+      font-size: 3.2rem;
+    margin-bottom: 20px;
+    color: #7e437f;
+    text-transform: uppercase;
+    }
+
+    .company-section p {
+      font-size: 1.8rem;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #413243;
+    }
+
+    .company-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .info-box {
+      background: rgb(245, 241, 232);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .info-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .info-box h3 {
+      color: #7e437f;
+      margin-bottom: 15px;
+    }
+
+    .info-box p {
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 14px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/eye.png" alt="Visionary Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Who we help.html">Who we help</a></li>
+        <li><a href="Solutions.html">Solutions</a></li>
+        <li><a href="Problems.html">Problems</a></li>
+        <li><a href="Research.html">Research</a></li>
+        <li><a href="Company.html" class="active">Company</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="company-section">
+    <h1>About Visionary</h1>
+    <p>We are a health-tech company transforming eye care through accessible AI-powered diagnostics. Our mission is to empower communities, improve early detection, and reduce preventable blindness globally.</p>
+
+    <div class="company-info">
+      <div class="info-box">
+        <h3>Our Mission</h3>
+        <p>To democratize access to retinal diagnostics using cutting-edge artificial intelligence and mobile tools.</p>
+      </div>
+      <div class="info-box">
+        <h3>Our Vision</h3>
+        <p>A world where everyone, regardless of geography or income, can access early eye disease detection.</p>
+      </div>
+      <div class="info-box">
+        <h3>Our Values</h3>
+        <p>Equity, innovation, transparency, and collaboration are at the core of every product and partnership we build.</p>
+      </div>
+      <div class="info-box">
+        <h3>Our Team</h3>
+        <p>A cross-disciplinary team of technologists, clinicians, and researchers united to solve global health disparities.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Visionary<br>Contact us at: <a href="mailto:info@visionary.com">info@visionary.com</a></p>
+  </footer>
+</body>
+</html>

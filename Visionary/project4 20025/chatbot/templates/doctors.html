@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+        .doctor-card {
+            width: 60%;
+            margin: 15px auto;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0px 0px 10px rgba(255, 107, 107, 0.6);
+        }
+        button {
+            padding: 10px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ffb6b9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Nearby Cardiac Specialists</h2>
+
+    <div id="doctors-list"></div>
+
+    <script>
+        let doctors = [
+            { name: "Dr. Rajesh Kumar", phone: "+91 98765 43210", available: "10 AM - 5 PM", distance: 1.2 },
+            { name: "Dr. Ananya Sharma", phone: "+91 91234 56789", available: "9 AM - 3 PM", distance: 2.5 },
+            { name: "Dr. Vijay Patel", phone: "+91 97856 23412", available: "11 AM - 6 PM", distance: 0.8 },
+            { name: "Dr. Neha Gupta", phone: "+91 90876 54321", available: "8 AM - 4 PM", distance: 1.0 },
+            { name: "Dr. Suresh Rao", phone: "+91 93456 12789", available: "10 AM - 6 PM", distance: 3.1 }
+        ];
+
+        doctors.sort((a, b) => a.distance - b.distance);
+
+        let list = doctors.map(doctor => `
+            <div class="doctor-card">
+                <p><strong>${doctor.name}</strong></p>
+                <p>Phone: ${doctor.phone}</p>
+                <p>Available: ${doctor.available}</p>
+                <p><strong>Distance: ${doctor.distance} km</strong></p>
+                <button onclick="bookAppointment('${doctor.name}')">Book Appointment</button>
+            </div>
+        `).join("");
+
+        document.getElementById("doctors-list").innerHTML = list;
+
+        function bookAppointment(name) {
+            alert(`Appointment with ${name} booked!`);
+        }
+    </script>
+</body>
+</html>

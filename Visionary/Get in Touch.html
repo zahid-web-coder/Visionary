@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Get in Touch - Visionary</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background:  
+        linear-gradient(to bottom,  rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        url('assets/oo.jpg') no-repeat center center / cover;
+      margin: 0;
+      padding: 0;
+      color: #1a1a1a;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      background-color: rgb(245, 241, 232);
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    form label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      background-color: #fdfdfd;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    .submit-btn {
+      margin-top: 30px;
+      width: 100%;
+      background-color:rgb(153 97 150);
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color:#be61cf;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Get in Touch</h1>
+    <p>Please fill in the form below to help us understand your needs.</p>
+
+    <form>
+      <label for="fullname">Full name *</label>
+      <input type="text" id="fullname" name="fullname" required>
+
+      <label for="email">Business email *</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="company">Company *</label>
+      <input type="text" id="company" name="company" required>
+
+      <label for="orgType">Organization Type *</label>
+      <select id="orgType" name="orgType" required>
+        <option value="">Select an option</option>
+        <option>Startup</option>
+        <option>Hospital</option>
+        <option>Clinic</option>
+        <option>Enterprise</option>
+      </select>
+
+      <label for="country">Country *</label>
+      <select id="country" name="country" required>
+        <option value="">Select an option</option>
+        <option>India</option>
+        <option>USA</option>
+        <option>UK</option>
+        <option>Other</option>
+      </select>
+
+      <label for="message">How can we support your business? (optional)</label>
+      <textarea id="message" name="message"></textarea>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+
+  <p style="text-align: center; margin-top: 30px;">
+    <a href="index.html" style="color: rgb(153 97 150); text-decoration: none; font-weight: 600;">← Back to Home</a>
+  </p>
+  
+  <footer>&copy; 2025 Visionary. All rights reserved.</footer>
+
+  <script>
+    document.querySelector("form").addEventListener("submit", function(e) {
+      e.preventDefault(); // Prevent actual form submission
+      alert("Thank you for getting in touch! We’ll get back to you shortly.");
+      this.reset(); // Optional: Clear the form fields
+    });
+  </script>
+  
+</body>
+</html>

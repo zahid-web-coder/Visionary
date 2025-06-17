@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction & AI Agent</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-image: url("{{ url_for('static', filename='heart.jpeg') }}");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            font-size: 18px;
+            font-weight: 900;
+            padding: 20px;
+        }
+        .container {
+            width: 55%;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 4px solid #A7C7E7; /* Pastel Blue Border */
+            box-shadow: 0px 0px 10px rgba(167, 199, 231, 0.6);
+        }
+        .chatbot {
+            width: 40%;
+            height: 500px;
+            background: white;
+            border-radius: 10px;
+            border: 4px solid #A8E6CF; /* Pastel Green Border */
+            box-shadow: 0px 0px 10px rgba(168, 230, 207, 0.6);
+            overflow-y: auto;
+            padding: 15px;
+            margin-left: 30px; /* ✅ Added space between Form and Chatbot */
+        }
+        .chat-input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid #A8E6CF; /* Soft border */
+            border-radius: 5px;
+        }
+        .chat-message {
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+
+        /* 🔥 Predict Button Styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ffb6b9); /* Soft Red to Pastel Pink */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 4px 10px rgba(255, 107, 107, 0.6);
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #ffb6b9, #ff6b6b);
+            transform: scale(1.05);
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Heart Disease Prediction Form</h2>
+        <form id="prediction-form">
+            Age: <input type="number" id="age" required><br><br>
+            Gender: 
+            <select id="gender">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select><br><br>
+            
+            Chest Pain: 
+            <select id="chest_pain">
+                <option value="ATA">ATA</option>
+                <option value="NAP">NAP</option>
+                <option value="ASY">ASY</option>
+                <option value="TA">TA</option>
+            </select><br><br>
+            
+            Resting BP: <input type="number" id="resting_bp" required><br><br>
+            Cholesterol: <input type="number" id="cholesterol" required><br><br>
+            
+            Fasting BS: 
+            <select id="fasting_bs">
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select><br><br>
+
+            Resting ECG:
+            <select id="resting_ecg">
+                <option value="Normal">Normal</option>
+                <option value="ST">ST</option>
+                <option value="LVH">LVH</option>
+            </select><br><br>
+            
+            Max HR: <input type="number" id="max_hr" required><br><br>
+            
+            Exercise Angina: 
+            <select id="exercise_angina">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+            </select><br><br>
+
+            Oldpeak: <input type="number" id="oldpeak" step="0.1" required><br><br>
+
+            ST Slope:
+            <select id="st_slope">
+                <option value="Up">Up</option>
+                <option value="Flat">Flat</option>
+                <option value="Down">Down</option>
+            </select><br><br>
+
+            <button type="button" onclick="sendPrediction()">Predict</button>
+        </form>
+
+        <h3>Prediction Result:</h3>
+        <p id="result"></p>
+    </div>
+
+    <div class="chatbot">
+        <h3>Chat with AI Agent</h3>
+        <div id="chat-box"></div>
+        <input type="text" id="chat-input" class="chat-input" placeholder="Ask me anything..." onkeypress="handleKeyPress(event)">
+    </div>
+
+    <script>
+        function sendPrediction() {
+            let data = {
+                "features": [
+                    document.getElementById("age").value,
+                    document.getElementById("gender").value,
+                    document.getElementById("chest_pain").value,
+                    document.getElementById("resting_bp").value,
+                    document.getElementById("cholesterol").value,
+                    document.getElementById("fasting_bs").value,
+                    document.getElementById("resting_ecg").value,
+                    document.getElementById("max_hr").value,
+                    document.getElementById("exercise_angina").value,
+                    document.getElementById("oldpeak").value,
+                    document.getElementById("st_slope").value
+                ]
+            };
+
+            fetch("/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                document.getElementById("result").innerText = "Prediction: " + result.prediction +  
+                ", Probability: " + result.probability + ", Message: " + result.message;
+            });
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+
+        function sendMessage() {
+            let input = document.getElementById("chat-input").value;
+            fetch("/chat", { method: "POST", body: JSON.stringify({ "message": input }), headers: { "Content-Type": "application/json" } })
+            .then(response => response.json())
+            .then(data => document.getElementById("chat-box").innerHTML += `<div class='chat-message'><b>AI Agent:</b> ${data.response}</div>`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Research | Visionary</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgb(245, 241, 232);
+      padding: 50px 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      height: 100px;
+    }
+
+    .logo img {
+      width: 200px;
+    }
+
+    .research-section {
+      background:
+      linear-gradient(to bottom,  rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        url('assets/res.jpg') no-repeat center center / cover;
+      padding: 60px 20px;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    .research-section h1 {
+      font-size: 3.2rem;
+    margin-bottom: 20px;
+    color: #7e437f;
+    text-transform: uppercase;
+    }
+
+    .research-section p {
+      font-size: 1.8rem;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #413243;
+    }
+
+    .research-areas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .research-box {
+      background: rgb(245, 241, 232);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .research-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .research-box h3 {
+      color: #7e437f;
+      margin-bottom: 15px;
+    }
+
+    .research-box p {
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 14px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/eye.png" alt="Visionary Logo" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Who we help.html">Who we help</a></li>
+        <li><a href="Solutions.html">Solutions</a></li>
+        <li><a href="Problems.html">Problems</a></li>
+        <li><a href="Research.html" class="active">Research</a></li>
+        <li><a href="Company.html">Company</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="research-section">
+    <h1>Our Research</h1>
+    <p>Visionary partners with leading institutions and experts to advance the field of AI diagnostics, retinal imaging, and predictive analytics for proactive health management.</p>
+
+    <div class="research-areas">
+      <div class="research-box">
+        <h3>AI & Retina Health</h3>
+        <p>Developing algorithms to identify biomarkers for diseases through high-resolution eye imaging.</p>
+      </div>
+      <div class="research-box">
+        <h3>Predictive Health Models</h3>
+        <p>Building data-driven models that forecast health risks based on non-invasive imaging and patient history.</p>
+      </div>
+      <div class="research-box">
+        <h3>Mobile Diagnostics</h3>
+        <p>Innovating compact and mobile tools for in-field diagnostics to reach populations with limited access.</p>
+      </div>
+      <div class="research-box">
+        <h3>Clinical Collaborations</h3>
+        <p>Collaborating with hospitals and universities to validate findings and expand our medical dataset.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Visionary<br>Contact us at: <a href="mailto:info@visionary.com">info@visionary.com</a></p>
+  </footer>
+</body>
+</html>
